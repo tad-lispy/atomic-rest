@@ -2,11 +2,12 @@
   "name": "atomic-rest",
   "main": "./lib/atomic-rest",
   "version": "0.1.0",
-  "description": "A short description of your package",
+  "author": "Tadeusz Łazurski <tadeusz@lazurski.pl>",
+  "description": "Quick and dirty REST API tester",
   "activationEvents": [
     "atomic-rest:request"
   ],
-  "repository": "https://github.com/atom/atomic-rest",
+  "repository": "https://github.com/lzrski/atomic-rest",
   "license": "MIT",
   "engines": {
     "atom": ">0.50.0"
