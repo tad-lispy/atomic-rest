@@ -1,7 +1,7 @@
 {
   "name": "atomic-rest",
   "main": "./lib/atomic-rest",
-  "version": "0.1.1",
+  "version": "0.2.0",
   "author": "Tadeusz Łazurski <tadeusz@lazurski.pl>",
   "description": "Quick and dirty REST API tester",
   "activationEvents": [
