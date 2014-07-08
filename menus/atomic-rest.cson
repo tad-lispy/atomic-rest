@@ -1,0 +1,16 @@
+# See https://atom.io/docs/latest/creating-a-package#menus for more details
+'context-menu':
+  '.overlayer':
+      'Enable atomic-rest': 'atomic-rest:toggle'
+
+'menu': [
+  {
+    'label': 'Packages'
+    'submenu': [
+      'label': 'atomic-rest'
+      'submenu': [
+        { 'label': 'Toggle', 'command': 'atomic-rest:toggle' }
+      ]
+    ]
+  }
+]
