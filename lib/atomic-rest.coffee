@@ -33,15 +33,21 @@ module.exports =
       url
       json
     }, (error, response, body) =>
+      try body = cson.stringify JSON.parse(body), null, 2
+      catch error
+        console.log "Can't parse body as a JSON. Will show raw."
+
+      headers = cson.stringify response.headers, null, 2
+
       editor.moveCursorToEndOfLine()
       editor.insertText """
 
 
         ### Response
         # Headers:
-        #{cson.stringify response.headers, null, 2}
+        #{headers}
         # Body:
-        #{cson.stringify body, null, 2}
+        #{body}
         ###
 
       """

@@ -22,20 +22,28 @@ GET http://api.twitter.com/1.1/search/tweets.json
 Select request block and type alt-ctrl-enter to get response along with headers, like that:
 
 ```
+
 ### Response
 # Headers:
 {
   "content-length": "61",
   "content-type": "application/json; charset=utf-8",
-  "date": "Wed, 09 Jul 2014 07:42:25 UTC",
+  "date": "Wed, 09 Jul 2014 09:09:50 UTC",
   "server": "tfe",
   "set-cookie": [
-    "guest_id=v1%3A140489174561366725; Domain=.twitter.com; Path=/; Expires=Fri, 08-Jul-2016 07:42:25 UTC"
+    "guest_id=v1%3A140489699053965426; Domain=.twitter.com; Path=/; Expires=Fri, 08-Jul-2016 09:09:50 UTC"
   ],
   "connection": "close"
 }
 # Body:
-"{\"errors\":[{\"message\":\"Bad Authentication data\",\"code\":215}]}"
+{
+  "errors": [
+    {
+      "message": "Bad Authentication data",
+      "code": 215
+    }
+  ]
+}
 ###
 ```
 
@@ -66,14 +74,13 @@ Connection: keep-alive
 
 # Body
 {
-  _id: 1
-  name: 'Katiusza'
-  moods: [
-    'playfull'
-    'chicky'
-    'moody'
+  "_id": 1,
+  "name": "Katiusza",
+  "moods": [
+    "playfull",
+    "chicky",
+    "moody"
   ]
-
 }
 ###
 ```
@@ -108,8 +115,6 @@ TODOs
   * Authentication
 
   * Cookies
-
-  * Response body parsing
 
   * Many more, probably...
 
