@@ -39,8 +39,35 @@ module.exports =
 
       headers = cson.stringify response.headers, null, 2
 
-      editor.moveCursorToEndOfLine()
-      editor.insertText """
+      # Position cursor after selection (at response insert position).
+      selectedRange = editor.getSelectedScreenRange()
+      editor.setCursorScreenPosition(selectedRange.end)
+
+      # Removing previous response.
+      ranges = editor.getSelectedBufferRanges()
+      try
+        editor.selectToBottom()
+        searchRange = editor.getSelectedBufferRange()
+
+        # Limit response search up to next request block (if present).
+        editor.scanInBufferRange(
+          /(GET|POST|PUT|DELETE|HEAD|PATCH|OPTION)[\t ]+(\S+)/, searchRange, (match) =>
+              searchRange = searchRange.copy()
+              searchRange.end = match.range.copy().start
+              match.stop()
+        )
+
+        # Find previous response and replace with empty string.
+        editor.scanInBufferRange(
+          /\s+### Response\s+# Headers:[\s\S]*?\s+# Body:[\s\S]*?\s+###\s+/, searchRange, (match) =>
+              match.replace("")
+        )
+      finally
+        editor.setSelectedBufferRanges(ranges)
+
+      # Adding current response.
+      try
+        editor.insertText """
 
 
         ### Response
@@ -50,4 +77,8 @@ module.exports =
         #{body}
         ###
 
-      """
+
+        """
+      finally
+        # Position cursor at the beginning of the request block.
+        editor.setCursorScreenPosition(selectedRange.start)
