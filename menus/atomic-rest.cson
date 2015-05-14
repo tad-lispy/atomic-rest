@@ -7,9 +7,9 @@
   {
     'label': 'Packages'
     'submenu': [
-      'label': 'atomic-rest'
+      'label': 'Atomic REST'
       'submenu': [
-        { 'label': 'Toggle', 'command': 'atomic-rest:toggle' }
+        { 'label': 'Request', 'command': 'atomic-rest:request' }
       ]
     ]
   }
